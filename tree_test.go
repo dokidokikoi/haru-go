@@ -12,12 +12,16 @@ func TestTreeNode(t *testing.T) {
 	root.Put("/user/create/aaa")
 	root.Put("/info/:id/aaa")
 
-	node := root.Get("/user/get/:id")
+	ctx := &Context{
+		Params: make(map[string]string),
+	}
+
+	node := root.Get("/user/get/:id", ctx)
 	fmt.Println(node)
-	node = root.Get("/user/create/hello")
+	node = root.Get("/user/create/hello", ctx)
 	fmt.Println(node)
-	node = root.Get("/user/create/aaa")
+	node = root.Get("/user/create/aaa", ctx)
 	fmt.Println(node)
-	node = root.Get("/info/:id/aaa")
+	node = root.Get("/info/:id/aaa", ctx)
 	fmt.Println(node)
 }
