@@ -70,6 +70,7 @@ next:
 			if node.name == "**" {
 				return node
 			}
+			return nil
 		}
 	}
 	return nil
